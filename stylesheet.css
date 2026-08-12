@@ -179,7 +179,7 @@ body {
 }
 
 #fightPage {
-	display: flex;
+	display: none;
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100vw;
