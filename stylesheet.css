@@ -1,7 +1,7 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-size: min(4vw,4vh);
+	margin: 0;	
+	padding: 0;
+	font-size: min(4vw,4vh);
 }
 
 body {
@@ -9,12 +9,13 @@ body {
 }
 
 #inventoryPage {
-	display: flex;
+	display: none;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
 #returnMainPage {
+	display: inherit;
 	position: fixed;
 }
 
@@ -41,8 +42,8 @@ body {
 }
 
 .equippedSlot {
-	width: 6vw;
-	height: 6vh;
+	width: 3vw;
+	height: 3vh;
 	padding: 1.5vh 0vw 1.5vh 1vw;
 	object-fit: contain;
 }
@@ -65,4 +66,96 @@ body {
 }
 #inventorySection > table {
 	border-collapse: collapse;
+}
+
+#mainPage {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100vw;
+	height: 100vh;
+	align-items: end;
+	justify-content: center;
+}
+
+#gotoInventory {
+	display: inherit;
+	top: 0;
+	left: 0;
+	position: fixed;
+}
+
+#saveButton {
+	position: fixed;
+	display: inherit;
+	width: 7vw;
+	top: 0;
+	right: 0;
+}
+
+#loadButton {
+	display: inherit;
+	position: fixed;
+	width: 7vw;
+	right: 0;
+	top: 5.5vh;
+}
+
+#mainPageEnemyDescription {
+	display: inherit;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	width: 40vw;
+	height: 30vh;
+	top: 0;
+	right: 30vw;
+	background-color:rgb(121, 120, 120);
+}
+#mainPageEnemyImage {
+	display: inherit;
+	position: absolute;
+	width: 30vw;
+	height: 30vh;
+	object-fit: contain;
+	right: 35vw;
+	top: 35vh;
+}
+#decreaseStageLevel {
+	display: inherit;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	width: 15vw;
+	height: 10vh;
+	left: 5vw;
+	top: 45vh;
+}
+#increaseStageLevel {
+	display: inherit;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	width: 15vw;
+	height: 10vh;
+	right: 5vw;
+	top: 45vh;
+}
+#fightButton {
+	display: inherit;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	width: 10vw;
+	height: 5vh;
+	right: 45vw;
+	bottom: 25vh;
+}
+#mainPageHeroDiv {
+	display: inherit;
+	width: 30vw;
+	height: 20vh;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(100, 102, 102);
 }
