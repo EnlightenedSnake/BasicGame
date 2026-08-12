@@ -3,7 +3,17 @@
 }
 
 #inventoryPage {
-  display: flex;
+  display: flex-inline;
 }
 
+#statsSection {
+  width: 60vw;
+  height: 50vh;
+  background-color: green;
+}
 
+#equippedSection {
+  width: 40vw;
+  height: 50vh;
+  background-color: blue;
+}
