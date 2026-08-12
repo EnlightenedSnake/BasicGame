@@ -3,10 +3,13 @@
   padding: 0px;
 }
 
+body {
+  overflow: visible;
+}
+
 #inventoryPage {
   display: flex-inline;
   flex-direction: row;
-  overflow: scroll;
 }
 
 #returnMainPage {
