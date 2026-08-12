@@ -41,8 +41,8 @@ body {
 }
 
 .equippedSlot {
-	width: 3vw;
-	height: 3vh;
+	width: 6vw;
+	height: 6vh;
 	padding: 1.5vh 0vw 1.5vh 1vw;
 	object-fit: contain;
 }
