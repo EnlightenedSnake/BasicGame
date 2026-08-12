@@ -6,6 +6,10 @@
   display: flex-inline;
 }
 
+#returnMainPage {
+  position: fixed;
+}
+
 #statsSection {
   display: inherit;
   width: 60vw;
