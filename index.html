@@ -36,7 +36,7 @@
           <tr>
             <td>Helmet:</td>
             <td>
-              <img src='helmet.png' class="equippedSlot" />
+              <img src='' class="equippedSlot" />
             </td>
           </tr>
           <tr>
@@ -83,17 +83,28 @@
       <button id="decreaseStageLevel">Go Back<br>A Stage<br></button>
       <button id="increaseStageLevel">Go Foward<br>Req Level 0<br></button>
       <button id="fightButton">Fight</button>
-      <p id="mainPageHeroDescription">Health<br>Level</p>
-    </div>
-    <div id="fightPage">
-      <p id="fightPageEnemyHealth">En. Health</p>
-      <img src=' ' id="fightPageEnemyImage" />
-      <p id="fightPageHeroHealth">Health</p>
-      <button id="attackButton">Attack</button>
-      <button id="itemsButton">Items</button>
-      <button id="runButton">Run</button>
-      <p id="battleLog">It's time to d-d-d-d-d-duel</p>
-    </div>
+      <div id="mainPageHeroDiv">
+        <table id="mainPageHeroTable">
+          <tr>
+            <td>Health:10/10</td>
+            <td><canvas id="healthbar" width="10" height="8"></canvas></td>
+          </tr>
+          <tr>
+            <td>Level:2</td>
+            <td><canvas id="xpbar" width="10" height="8"></canvas></td>
+          </tr>
+        </table>
+       </div>
+     </div>
+   <div id="fightPage">
+     <p id="fightPageEnemyHealth">En. Health</p>
+     <img src=' ' id="fightPageEnemyImage" />
+     <p id="fightPageHeroHealth">Health</p>
+     <button id="attackButton">Attack</button>
+     <button id="itemsButton">Items</button>
+     <button id="runButton">Run</button>
+     <p id="battleLog">It's time to d-d-d-d-d-duel</p>
+   </div>
    <script src="main.js"></script>
   </body>
 </html>
