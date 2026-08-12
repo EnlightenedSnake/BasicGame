@@ -3,6 +3,9 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
       MPtoIPBtn = document.getElementById('gotoInventory'),
       MPtoFPBtn = document.getElementById('fightButton'),
       FPtoMPBtn = document.getElementById('runButton'),
+      MP = document.getElementById('mainPage'),
+      FP = document.getElementById('fightPage'),
+      IP = document.getElementById('inventoryPage'),
       incStatBtn = document.getElementsByClass('incStat'),
       stats = document.getElementsByClass('stat'),
       statPoints = document.getElementById('statPoints'),
@@ -23,3 +26,22 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
       attackBtn = document.getElementById('attackButton'),
       itemsBtn = document.getElementById('itemsButton'),
       battleLog = document.getElementById('battleLog');
+
+
+
+IPtoMPBtn.onclick = () => {
+      IP.style.display = "none";
+      MP.style.display = "flex";
+}
+MPtoIPBtn.onclick = () => {
+      MP.style.display = "none";
+      IP.style.display = "flex";
+}
+MPtoFPBtn.onclick = () => {
+      MP.style.display = "none";
+      FP.style.display = "flex";
+}
+FPtoMPBtn.onclick = () => {
+      FP.style.display = "none";
+      MP.style.display = "flex";
+}
