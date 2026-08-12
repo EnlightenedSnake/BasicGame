@@ -5,6 +5,7 @@
 
 #inventoryPage {
   display: flex-inline;
+  flex-direction: row;
 }
 
 #returnMainPage {
