@@ -4,65 +4,65 @@
   font-size: min(4vw,4vh);
 }
 
-  body {
-    overflow: hidden;
-  }
+body {
+	overflow: hidden;
+}
 
-  #inventoryPage {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+#inventoryPage {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 
-  #returnMainPage {
-    position: fixed;
-  }
+#returnMainPage {
+	position: fixed;
+}
 
-  #statsSection {
-    display: inherit;
-    width: 50vw;
-    height: 60vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #aaaaaa;
-  }
-  
-  .stat {
-  	padding: 2.5vh 0vw 2.5vh 5vw;
-  }
+#statsSection {
+	display: inherit;
+	width: 50vw;
+	height: 60vh;
+	justify-content: center;
+	align-items: center;
+	background-color: gray;
+}
 
-  #equippedSection {
-    display: inherit;
-    width: 50vw;
-    height: 60vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #888888;
-  }
-	
-  .equippedSlot {
-  	width: 3vw;
-    height: 3vh;
-  	padding: 1.5vh 0vw 1.5vh 1vw;
-    object-fit: contain;
-  }
-  
-  #equippedSection > p {
-  	position: absolute;
-    width: 45vw;
-    height: 15vh;
-  	top: 46vh;
-    overflow-wrap: break-word;
-    overflow-y: auto;
-  }
-  #inventorySection {
-  	display: inherit;
-    width: 100vw;
-    height: 40vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #626262;
-  }
-  #inventorySection > table {
-  	border-collapse: collapse;
-  }
+.stat {
+	padding: 2.5vh 0vw 2.5vh 5vw;
+}
+
+#equippedSection {
+	display: inherit;
+	width: 50vw;
+	height: 60vh;
+	justify-content: center;
+	align-items: center;
+	background-color: gray;
+}
+
+.equippedSlot {
+	width: 3vw;
+	height: 3vh;
+	padding: 1.5vh 0vw 1.5vh 1vw;
+	object-fit: contain;
+}
+
+#equippedSection > p {
+	position: absolute;
+	width: 45vw;
+	height: 15vh;
+	top: 46vh;
+	overflow-wrap: break-word;
+	overflow-y: auto;
+}
+#inventorySection {
+	display: inherit;
+	width: 100vw;
+	height: 40vh;
+	justify-content: center;
+	align-items: center;
+	background-color: gray;
+}
+#inventorySection > table {
+	border-collapse: collapse;
+}
