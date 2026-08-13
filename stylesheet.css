@@ -119,8 +119,8 @@ body {
 #statsButton {
   display: inherit;
   position: fixed;
-  top: 25vh;
-  left: 10vw;
+  top: 50px;
+  left: 0vw;
   width: 10vw;
   height: 10vw;
   background-color: white;
