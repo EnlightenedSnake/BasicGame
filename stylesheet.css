@@ -228,7 +228,6 @@ body {
   height: 5vh;
   right: 10vw;
   top: 2vh;
-  background-color: rgb(255, 0, 0);
 }
 #fightPageEnemyHealth{
   display: inherit;
@@ -239,7 +238,7 @@ body {
   height: 10vh;
   right: 35vw;
   top: 9vh;
-  background-color: rgb(125, 0, 0);
+  background-color: red;
 }
 #fightPageEnemyImage {
   display: inherit;
@@ -257,7 +256,6 @@ body {
   height: 5vh;
   right: 30vw;
   bottom: 45vh;
-  background-color: rgb(44, 44, 255);
 }
 #fightPageHeroHealth{
   display: inherit;
