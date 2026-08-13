@@ -114,6 +114,7 @@ body {
   position: fixed;
   top: 5.5vh;
   left: 0;
+  background: url(lvlbtn.png)
 }
 
 #statsPopUp {
