@@ -115,6 +115,7 @@ body {
   top: 5.5vh;
   left: 0;
   background: url(lvlbtn.png);
+  object-fit: contain;
   border-width: 0;
   width: 5vw;
   height: 5vw;
