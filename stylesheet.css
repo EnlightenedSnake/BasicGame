@@ -87,9 +87,16 @@ body {
 
 #gotoInventory {
   display: inherit;
+  position: fixed;
   top: 0;
   left: 0;
-  position: fixed;
+  width: 10vw;
+  height: 10vw;
+  background-color: white;
+  background-image: url(lvlbtn.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-width: 0;
 }
 
 #saveButton {
