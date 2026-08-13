@@ -114,11 +114,11 @@ body {
   position: fixed;
   top: 5.5vh;
   left: 0;
+  width: 10vw;
+  height: 10vw;
   background: url(lvlbtn.png);
-  object-fit: fill;
+  object-fit: cover;
   border-width: 0;
-  width: 5vw;
-  height: 5vw;
 }
 
 #statsPopUp {
