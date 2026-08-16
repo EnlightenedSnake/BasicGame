@@ -121,25 +121,27 @@ function showItem(i){
   }
 }
 function updateHealthBars() {
+  FPEneHealth.innerText = enemyCurrentHealth + "/" + enemyList[currentStage].health + " HP";
+  FPHeroHealth.innerText = heroCurrentHealth + "/" + heroMaxHealth + "HP";
   FPEneHealthBar.reset();
   FPHeroHealthBar.reset();
-	FPEneHealthBar.beginPath();
-	FPEneHealthBar.fillStyle = "gray";  	
+  FPEneHealthBar.beginPath();
+  FPEneHealthBar.fillStyle = "gray";  	
   FPEneHealthBar.roundRect(0,0,0.6*window.innerWidth,0.29*window.innerHeight,0.025*window.innerHeight);
   FPEneHealthBar.fill();
   FPEneHealthBar.closePath();
   FPEneHealthBar.beginPath();
-	FPEneHealthBar.fillStyle = "red";
+  FPEneHealthBar.fillStyle = "red";
   FPEneHealthBar.roundRect(0,0.0,(enemyCurrentHealth/enemyList[currentStage].health)*0.6*window.innerWidth,0.29*window.innerHeight,0.025*window.innerHeight);
   FPEneHealthBar.fill();
   FPEneHealthBar.closePath();
   FPHeroHealthBar.beginPath();
-	FPHeroHealthBar.fillStyle = "gray";  	
+  FPHeroHealthBar.fillStyle = "gray";  	
   FPHeroHealthBar.roundRect(0,0,0.6*window.innerWidth,0.29*window.innerHeight,0.025*window.innerHeight);
   FPHeroHealthBar.fill();
   FPHeroHealthBar.closePath();
   FPHeroHealthBar.beginPath();
-	FPHeroHealthBar.fillStyle = "red";
+  FPHeroHealthBar.fillStyle = "red";
   FPHeroHealthBar.roundRect(0,0,(heroCurrentHealth/heroMaxHealth)*0.6*window.innerWidth,0.29*window.innerHeight,0.025*window.innerHeight);
   FPHeroHealthBar.fill();
   FPHeroHealthBar.closePath();
@@ -147,19 +149,20 @@ function updateHealthBars() {
 function startFightPage() {
   heroCurrentHealth = heroMaxHealth;
   enemyCurrentHealth = enemyList[currentStage].health;
-	FPEnHealth = enemyCurrentHealth + "/" + enemyCurrentHealth + " HP";
+  FPEneHealth.innerText = enemyCurrentHealth + "/" + enemyCurrentHealth + " HP";
+  FPHeroHealth.innerText = heroCurrentHealth + "/" + heroMaxHealth + "HP";
   FPEneHealthBar.beginPath();
-	FPEneHealthBar.fillStyle = "gray";  	
+  FPEneHealthBar.fillStyle = "gray";  	
   FPEneHealthBar.roundRect(0,0,0.6*window.innerWidth,0.29*window.innerHeight,0.025*window.innerHeight);
   FPEneHealthBar.fill();
-	FPEneHealthBar.fillStyle = "red"; 	
+  FPEneHealthBar.fillStyle = "red"; 	
   FPEneHealthBar.roundRect(0.025*window.innerWidth,0.025*window.innerHeight,0.55*window.innerWidth,0.24*window.innerHeight,0.025*window.innerHeight);
   FPEneHealthBar.fill();
   FPHeroHealthBar.beginPath();
-	FPHeroHealthBar.fillStyle = "gray";
+  FPHeroHealthBar.fillStyle = "gray";
   FPHeroHealthBar.roundRect(0,0,0.6*window.innerWidth,0.29*window.innerHeight,0.025*window.innerHeight);
   FPHeroHealthBar.fill();
-	FPHeroHealthBar.fillStyle = "red";
+  FPHeroHealthBar.fillStyle = "red";
   FPHeroHealthBar.roundRect(0.025*window.innerWidth,0.025*window.innerHeight,0.55*window.innerWidth,0.24*window.innerHeight,0.025*window.innerHeight);
   FPHeroHealthBar.fill();
   
@@ -186,11 +189,12 @@ MPtoIPBtn.onclick = () => {
 MPtoFPBtn.onclick = () => {
     MP.style.display = "none";
     FP.style.display = "flex";
-		startFightPage();
+	startFightPage();
 }
 FPtoMPBtn.onclick = () => {
     FP.style.display = "none";
     MP.style.display = "flex";
+	battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
 }
 openSPUBtn.onclick = () => {
     SPU.style.display = "flex";
@@ -199,11 +203,17 @@ closeSPUBtn.onclick = () => {
     SPU.style.display = "none";
 }
 attackBtn.onclick = () => {
-		enemyCurrentHealth -= heroDamage;
+  if(enemyCurrentHealth <= 0 || heroCurrentHealth <= 0){
+	FP.style.display = "none";
+    MP.style.display = "flex";
+    battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
+  } else {
+	enemyCurrentHealth -= heroDamage;
   	heroCurrentHealth -= enemyList[currentStage].damage;
   	battleLog.innerText += "\nHero has dealt " + heroDamage + " damage to " + enemyList[currentStage].name + "\n" + enemyList[currentStage].name + " has dealt " + enemyList[currentStage].damage + " damage to Hero"
   	updateHealthBars();
   	checkWinConditions();
+  }
 }
 for (let i = 0; i < 30; ++i) {
   inventory[i].mouseover = () => {
