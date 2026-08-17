@@ -7,6 +7,7 @@
       FP = document.getElementById('fightPage'),
       IP = document.getElementById('inventoryPage'),
       SPU = document.getElementById('statsPopUp'),
+      CPU = document.getElementById('consumablesPopUp'),
   	  openSPUBtn = document.getElementById('statsButton'),
   	  closeSPUBtn = document.getElementById('exitStatsPopUpButton'),
       incStatBtn = document.getElementsByClassName('incStat'),
@@ -16,6 +17,7 @@
       itemDesImg = document.getElementById('largeItemImage'),
       itemDes = document.getElementById('itemDescription'),
       inventory = document.getElementsByClassName('inventorySlot'),
+      deleteModeBtn = document.getElementById('deleteModeButton'),
       saveBtn = document.getElementById('saveButton'),
       loadBtn = document.getElementById('loadButton'),
       MPEneDsc = document.getElementById('mainPageEnemyDescription'),
@@ -32,8 +34,12 @@
       FPHeroHealthBarCanvas = document.getElementById('fightPageHeroHealthBar'),
       FPHeroHealthBar = FPHeroHealthBarCanvas.getContext("2d"),
       attackBtn = document.getElementById('attackButton'),
-      itemsBtn = document.getElementById('itemsButton'),
+      openCPUBtn = document.getElementById('itemsButton'),
+      closeCPUBtn = document.getElementById('closeConsumablesPopUpButton'),
+      healInventory = document.getElementsByClassName('consumableSlot'),
+      CPUDes = document.getElementById('consumableItemDescription'),
       battleLog = document.getElementById('battleLog');
+  		
 
 class Equipment {
   name = "Sword";
@@ -98,31 +104,37 @@ function showItem(i){
       itemDes.innerText = heroArmorInven[i].name;
     }
   }else if(i < 20){
-    if (i>heroWeaponInven.length) {
+    if ((i-10)>heroWeaponInven.length) {
     	return;
     } else {
-      itemDesImg.src = heroWeaponInven[i].img;
-      itemDes.innerText = heroWeaponInven[i].name;
+      itemDesImg.src = heroWeaponInven[i-10].img;
+      itemDes.innerText = heroWeaponInven[i-10].name;
     }
   }else if(i < 30){
-    if (i>heroHealInven.length) {
+    if ((i-20)>heroHealInven.length) {
     	return;
     } else {
-      itemDesImg.src = heroHealInven[i].img;
-      itemDes.innerText = heroHealInven[i].name;
+      itemDesImg.src = heroHealInven[i-20].img;
+      itemDes.innerText = heroHealInven[i-20].name;
     }
-  } else {
-    if (heroEquipment[i] == "none"){
+  } else if(i < 36){
+    if (heroEquipment[i-30] == "none"){
     	return; 
     } else {
-    	itemDesImg.src = heroEquipment[i].img;
-      itemDes.innerText = heroEquipment[i].name;
+    	itemDesImg.src = heroEquipment[i-30].img;
+      itemDes.innerText = heroEquipment[i-30].name;
+    }
+  } else {
+  	if ((i-36)>heroHealInven.length) {
+    	return;
+    } else {
+      CPUDes.innerText = heroHealInven[i-20].name;
     }
   }
 }
 function updateHealthBars() {
-  FPEneHealth.innerText = enemyCurrentHealth + "/" + enemyList[currentStage].health + " HP";
-  FPHeroHealth.innerText = heroCurrentHealth + "/" + heroMaxHealth + "HP";
+  FPEneHealth.innerText = Math.max(0,enemyCurrentHealth) + "/" + enemyList[currentStage].health + " HP";
+  FPHeroHealth.innerText = Math.max(0,heroCurrentHealth) + "/" + heroMaxHealth + "HP";
   FPEneHealthBar.reset();
   FPHeroHealthBar.reset();
   FPEneHealthBar.beginPath();
@@ -169,7 +181,8 @@ function startFightPage() {
 }
 function checkWinConditions(){
 	if(heroCurrentHealth == 0){
-  	battleLog.innerText += "\nYou died, press any key to go to Main Page"
+  	battleLog.innerText += "\nYou died, press any key to go to Main Page";
+    battleLog.scrollTop = battleLog.scrollHeight;
     document.onkeydown = () => {
     	FP.style.display = "none";
     	MP.style.display = "flex";
@@ -188,19 +201,25 @@ MPtoIPBtn.onclick = () => {
 }
 MPtoFPBtn.onclick = () => {
     MP.style.display = "none";
-    FP.style.display = "flex";
-	startFightPage();
+  	FP.style.display = "flex";
+		startFightPage();
 }
 FPtoMPBtn.onclick = () => {
-    FP.style.display = "none";
-    MP.style.display = "flex";
-	battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
+  	FP.style.display = "none";
+  	MP.style.display = "flex";
+		battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
 }
 openSPUBtn.onclick = () => {
     SPU.style.display = "flex";
 }
 closeSPUBtn.onclick = () => {
     SPU.style.display = "none";
+}
+openCPUBtn.onclick = () => {
+		CPU.style.display = "flex";
+}
+closeCPUBtn.onclick = () => {
+ 		CPU.style.display = "none"; 
 }
 attackBtn.onclick = () => {
   if(enemyCurrentHealth <= 0 || heroCurrentHealth <= 0){
@@ -210,7 +229,8 @@ attackBtn.onclick = () => {
   } else {
 	enemyCurrentHealth -= heroDamage;
   	heroCurrentHealth -= enemyList[currentStage].damage;
-  	battleLog.innerText += "\nHero has dealt " + heroDamage + " damage to " + enemyList[currentStage].name + "\n" + enemyList[currentStage].name + " has dealt " + enemyList[currentStage].damage + " damage to Hero"
+  	battleLog.innerText += "\nHero has dealt " + heroDamage + " damage to " + enemyList[currentStage].name + "\n" + enemyList[currentStage].name + " has dealt " + enemyList[currentStage].damage + " damage to Hero";
+    battleLog.scrollTop = battleLog.scrollHeight;
   	updateHealthBars();
   	checkWinConditions();
   }
@@ -223,5 +243,10 @@ for (let i = 0; i < 30; ++i) {
 for (let i = 0; i < 6; ++i) {
  	equippedImgs[i].mouseover = () => {
    	showItem(i+30); 
+  }
+}
+for (let i = 0; i < 10; ++i) {
+	healInventory[i].mouseover = () => {
+  	showItem(i+36); 
   }
 }
