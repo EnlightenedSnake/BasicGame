@@ -95,28 +95,28 @@ function showItem(i){
     	return;
     } else {
       itemDesImg.src = heroArmorInven[i].img;
-      itemDes = heroArmorInven[i].name;
+      itemDes.innerText = heroArmorInven[i].name;
     }
   }else if(i < 20){
     if (i>heroWeaponInven.length) {
     	return;
     } else {
       itemDesImg.src = heroWeaponInven[i].img;
-      itemDes = heroWeaponInven[i].name;
+      itemDes.innerText = heroWeaponInven[i].name;
     }
   }else if(i < 30){
     if (i>heroHealInven.length) {
     	return;
     } else {
       itemDesImg.src = heroHealInven[i].img;
-      itemDes = heroHealInven[i].name;
+      itemDes.innerText = heroHealInven[i].name;
     }
   } else {
     if (heroEquipment[i] == "none"){
     	return; 
     } else {
     	itemDesImg.src = heroEquipment[i].img;
-      itemDes = heroEquipment[i].name;
+      itemDes.innerText = heroEquipment[i].name;
     }
   }
 }
