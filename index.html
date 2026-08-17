@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="stylesheet.css">
   </head>
   <body>
-    <div id="inventoryPage">
+	<div id="inventoryPage">
     <button id="returnMainPage">X</button>
     <div id="equippedSection">
       <table>
@@ -50,6 +50,7 @@
     	<p id="itemDescription">No Item Selected</p>
     </div>
     <div id="inventorySection">
+      <button id="deleteModeButton">Delete</button>
       <table>
         <tr class="inventorySpace"></tr>
         	<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
@@ -148,6 +149,24 @@
     <button id="attackButton">Attack</button>
     <button id="itemsButton">Items</button>
     <button id="runButton">Run</button>
+    <div id="consumablesPopUp">
+      <button id="closeConsumablesPopUpButton">X</button>
+      <table>
+        <tr id="consumableItemsRow">
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+        </tr>
+      </table>
+      <p id="consumableItemDescription">Description Here</p>
+    </div>
     <p id="battleLog">It's time to d-d-d-d-d-duel</p>
   </div>
    <script src="main.js"></script>
