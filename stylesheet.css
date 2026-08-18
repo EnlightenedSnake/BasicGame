@@ -84,6 +84,7 @@ body {
   justify-content: center;
   align-items: center;
   border-collapse: collapse;
+  background-color: green;
 }
 .inventorySlot {
   width: 5vw;
