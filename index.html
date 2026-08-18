@@ -4,172 +4,171 @@
   </head>
   <body>
 	<div id="inventoryPage">
-    <button id="returnMainPage">X</button>
-    <div id="equippedSection">
-      <table>
-        <tr>
-          <td>Helmet:</td>
-          <td>
-            <img src='' class="equippedSlot" />
-          </td>
-        </tr>
-        <tr>
-          <td>Chestplate:</td>
-          <td>
-            <img src='' class="equippedSlot" />
-          </td>
-        </tr>
-        <tr>
-          <td>Pants:</td>
-          <td>
-            <img src='' class="equippedSlot" />
-          </td>
-        </tr>
-        <tr> 
-          <td>Boots:</td>
-          <td>
-            <img src='' class="equippedSlot" />
-          </td>
-        </tr>
-        <tr>
-          <td>Weapon:</td>
-          <td>
-            <img src='' class="equippedSlot" />
-          </td>
-        </tr>
-        <tr>
-          <td>Shield:</td>
-          <td>
-            <img src='' class="equippedSlot" />
-          </td>
-       </tr>
-      </table>
-    </div>
-    <div id="itemDescriptionSection">
-      <img src='EmptyItemBox.png' id="largeItemImage"></img>
-      <p id="itemDescription">No Item Selected</p>
-    </div>
-    <div id="inventorySection">
-      <button id="deleteModeButton">Delete</button>
-      <table>
-        <tr class="inventorySpace">
-        	<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-		</tr>
-        <tr class="inventorySpace">
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-		</tr>
-        <tr class="inventorySpace">
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-			<td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div id="mainPage">
-    <button id="gotoInventory"></button>
-    <button id="saveButton">Save</button>
-    <button id="loadButton">Load</button>
-    <button id="statsButton"></button>
-    <p id="mainPageEnemyDescription">Weak Enemy<br>5 HP <br>Flimsy Leather Boots(30%)</p>
-    <img src=' 'id="mainPageEnemyImage" />
-    <button id="decreaseStageLevel">Go Back<br>A Stage<br></button>
-    <button id="increaseStageLevel">Go Foward<br>Req Level 5<br></button>
-    <button id="fightButton">Fight</button>
-    <div id="mainPageHeroDiv">
-      <table id="mainPageHeroTable">
-        <tr>
-          <td>Health: 10/10</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Level: 0</td>
-          <td><canvas id="xpbar" width="10" height="8"></canvas></td>
-        </tr>
-      </table>
-    </div>
-    <div id="statsPopUp">
-      <button id="exitStatsPopUpButton">X</button>
-      <table>
-        <tr>
-          <td>
-            <button class="incStat">+</button>
-          </td>
-          <td class="stat">Health: 10</td>
-        </tr>
-        <tr>
-          <td>
-            <button class="incStat">+</button>
-          </td>
-          <td class="stat">Damage: 2</td>
-        </tr>
-        <tr>
-          <td>
-            <button class="incStat">+</button>
-          </td>
-          <td class="stat">Defenese: 0</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td id="statPoints">Stat Points: 0</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div id="fightPage">
-    <canvas id="fightPageEnemyHealthBar"></canvas>
-    <p id="fightPageEnemyHealth">En. Health</p>
-    <img src=' ' id="fightPageEnemyImage" />
-    <canvas id="fightPageHeroHealthBar"></canvas>
-    <p id="fightPageHeroHealth">Health</p>
-    <button id="attackButton">Attack</button>
-    <button id="itemsButton">Items</button>
-    <button id="runButton">Run</button>
-    <div id="consumablesPopUp">
-      <button id="closeConsumablesPopUpButton">X</button>
-      <table>
-        <tr id="consumableItemsRow">
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-    			<td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
-        </tr>
-      </table>
-      <p id="consumableItemDescription">Description Here</p>
-    </div>
-    <p id="battleLog">It's time to d-d-d-d-d-duel</p>
-  </div>
+	  <button id="returnMainPage">X</button>
+	  <div id="equippedSection">
+	    <table>
+	      <tr>
+	        <td>Helmet:</td>
+	        <td>
+	          <img src="" class="equippedSlot" />
+	        </td>
+	      </tr>
+	      <tr>
+	        <td>Chestplate:</td>
+	        <td>
+	          <img src="" class="equippedSlot" />
+	        </td>
+	      </tr>
+	      <tr>
+	        <td>Pants:</td>
+	        <td>
+	          <img src="" class="equippedSlot" />
+	        </td>
+	      </tr>
+	      <tr>
+	        <td>Boots:</td>
+	        <td>
+	          <img src="" class="equippedSlot" />
+	        </td>
+	      </tr>
+	      <tr>
+	        <td>Weapon:</td>
+	        <td>
+	          <img src="" class="equippedSlot" />
+	        </td>
+	      </tr>
+	      <tr>
+	        <td>Shield:</td>
+	        <td>
+	          <img src="" class="equippedSlot" />
+	        </td>
+	      </tr>
+	    </table>
+	  </div>
+	  <div id="itemDescriptionSection">
+	    <img src="EmptyItemBox.png" id="largeItemImage" />
+	    <p id="itemDescription">No Item Selected</p>
+	  </div>
+	  <div id="inventorySection">
+	    <button id="deleteModeButton">Delete</button>
+	    <table>
+	      <tr class="inventorySpace"></tr>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      <tr class="inventorySpace">
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      </tr>
+	      <tr class="inventorySpace">
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="inventorySlot" src="EmptyItemBox.png" /></td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+	<div id="mainPage">
+	  <button id="gotoInventory"></button>
+	  <button id="saveButton">Save</button>
+	  <button id="loadButton">Load</button>
+	  <button id="statsButton"></button>
+	  <p id="mainPageEnemyDescription">Weak Enemy<br />5 HP <br />Flimsy Leather Boots(30%)</p>
+	  <img src=" " id="mainPageEnemyImage" />
+	  <button id="decreaseStageLevel">Go Back<br />A Stage<br /></button>
+	  <button id="increaseStageLevel">Go Foward<br />Req Level 5<br /></button>
+	  <button id="fightButton">Fight</button>
+	  <div id="mainPageHeroDiv">
+	    <table id="mainPageHeroTable">
+	      <tr>
+	        <td>Health: 10/10</td>
+	        <td></td>
+	      </tr>
+	      <tr>
+	        <td>Level: 0</td>
+	        <td><canvas id="xpbar" width="10" height="8"></canvas></td>
+	      </tr>
+	    </table>
+	  </div>
+	  <div id="statsPopUp">
+	    <button id="exitStatsPopUpButton">X</button>
+	    <table>
+	      <tr>
+	        <td>
+	          <button class="incStat">+</button>
+	        </td>
+	        <td class="stat">Health: 10</td>
+	      </tr>
+	      <tr>
+	        <td>
+	          <button class="incStat">+</button>
+	        </td>
+	        <td class="stat">Damage: 2</td>
+	      </tr>
+	      <tr>
+	        <td>
+	          <button class="incStat">+</button>
+	        </td>
+	        <td class="stat">Defenese: 0</td>
+	      </tr>
+	      <tr>
+	        <td></td>
+	        <td id="statPoints">Stat Points: 0</td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+	<div id="fightPage">
+	  <canvas id="fightPageEnemyHealthBar"></canvas>
+	  <p id="fightPageEnemyHealth">En. Health</p>
+	  <img src=" " id="fightPageEnemyImage" />
+	  <canvas id="fightPageHeroHealthBar"></canvas>
+	  <p id="fightPageHeroHealth">Health</p>
+	  <button id="attackButton">Attack</button>
+	  <button id="itemsButton">Items</button>
+	  <button id="runButton">Run</button>
+	  <div id="consumablesPopUp">
+	    <button id="closeConsumablesPopUpButton">X</button>
+	    <table>
+	      <tr id="consumableItemsRow">
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	        <td><img data-id="" class="consumableSlot" src="EmptyItemBox.png" /></td>
+	      </tr>
+	    </table>
+	    <p id="consumableItemDescription">No Item Selected</p>
+	  </div>
+	  <p id="battleLog">It's time to d-d-d-d-d-duel</p>
+	</div>
    <script src="main.js"></script>
   </body>
 </html>
