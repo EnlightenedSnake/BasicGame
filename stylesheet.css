@@ -78,17 +78,11 @@ body {
   font-size: min(3vw, 3vh);
 }
 #inventorySection > table {
-  display: inherit;
-  width: 50vw;
-  height: 15vh;
-  justify-content: center;
-  align-items: center;
   border-collapse: collapse;
-  background-color: green;
 }
 .inventorySlot {
-  width: 5vw;
-  height: 5vh;
+  width: min(5vw, 5vh);
+  height: min(5vw, 5vh);
   object-fit: contain;
 }
 
