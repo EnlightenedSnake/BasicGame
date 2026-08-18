@@ -476,8 +476,10 @@
     }
   };
   incStageLvlBtn.onclick = () => {
-  	currentStage++;
-    updateMainPage();
+	if(heroLevel >= stageLvlReq(currentStage)){
+	  	currentStage++;
+	    updateMainPage();
+	}
   };
   decStageLvlBtn.onclick = () => {
   	currentStage--;
