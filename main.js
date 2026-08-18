@@ -1,5 +1,5 @@
 //Naming Conventions: MP=Main Page, IP=Inventory Page, FP=Fight Page, Btn=Button, Img=Image, Ene=Enemy, Dsc=Description
-const IPtoMPBtn = document.getElementById('returnMainPage'),
+  const IPtoMPBtn = document.getElementById('returnMainPage'),
     MPtoIPBtn = document.getElementById('gotoInventory'),
     MPtoFPBtn = document.getElementById('fightButton'),
     FPtoMPBtn = document.getElementById('runButton'),
@@ -22,10 +22,11 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     loadBtn = document.getElementById('loadButton'),
     MPEneDsc = document.getElementById('mainPageEnemyDescription'),
     MPEneImg = document.getElementById('mainPageEnemyImage'),
-    incStageLvl = document.getElementById('increaseStageLevel'),
-    decStageLvl = document.getElementById('decreaseStageLevel'),
+    incStageLvlBtn = document.getElementById('increaseStageLevel'),
+    decStageLvlBtn = document.getElementById('decreaseStageLevel'),
     MPHeroTable = document.getElementById('mainPageHeroTable'),
-    MPHeroXPBar = MPHeroTable.children[0].children[1].children[1].children[0].getContext('2d'),
+    MPHeroXPBarCanvas = document.getElementById('XPBar'),
+    MPHeroXPBar = MPHeroXPBarCanvas.getContext('2d'),
     FPEneHealthBarCanvas = document.getElementById('fightPageEnemyHealthBar'),
     FPEneHealthBar = FPEneHealthBarCanvas.getContext('2d'),
     FPEneHealth = document.getElementById('fightPageEnemyHealth'),
@@ -37,10 +38,9 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     openCPUBtn = document.getElementById('itemsButton'),
     closeCPUBtn = document.getElementById('closeConsumablesPopUpButton'),
     healInventory = document.getElementsByClassName('consumableSlot'),
-    CPUDes = document.getElementById('consumableItemDescription'),
+    CPUDsc = document.getElementById('consumableItemDescription'),
     battleLog = document.getElementById('battleLog');
 
-  deleteMode = false;
   class Equipment {
     name = 'Sword';
     type = 'Helmet, Chestplate, Pants, Boots, Weapon, Shield, or Healing';
@@ -55,18 +55,10 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
       this.indexNum = indexNumber;
     }
   }
-  const flimsyLeatherBoots = new Equipment(
-    'Leather Boots that are holding on by a thread, +1 defense',
-    'Boots',
-    1,
-    'helmet.png',
-    0,
-  );
-
-  const equipmentList = [flimsyLeatherBoots];
+  const flimsyLeatherBoots = new Equipment('Leather Boots that are holding on by a thread, +1 defense', 'Boots', 1, '', 0);
 
   class Enemy {
-    name = 'Joe';
+    name = '';
     health = 0;
     damage = 0;
     defense = 0;
@@ -86,9 +78,12 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     }
   }
   const firstEnemy = new Enemy('Weak', 5, 2, 0, 2, [flimsyLeatherBoots], [0.3], '');
+  const secondEnemy = new Enemy('Less Strong', 10, 4, 1, 5, [], [], '');
 
-  const enemyList = [firstEnemy];
-
+  const equipmentList = [flimsyLeatherBoots];
+  const enemyList = [firstEnemy, secondEnemy];
+	const stageLvlReq = [5, 8]
+  
   var heroMaxHealth = 10;
   var heroDamage = 2;
   var heroDefense = 0;
@@ -96,12 +91,13 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
   var heroLevel = 0;
   var heroXP = 0;
   var heroEquipment = ['none', 'none', 'none', 'none', 'none', 'none'];
-  var heroArmorInven = [flimsyLeatherBoots];
+  var heroArmorInven = [];
   var heroWeaponInven = [];
   var heroHealInven = [];
   var currentStage = 0;
   var enemyCurrentHealth = 0;
   var heroCurrentHealth = 0;
+  var deleteMode = false;
 
   function updateInventory(rowNum) {
     if (rowNum == 1) {
@@ -123,10 +119,10 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     } else if (rowNum == 3) {
       for (let i = 0; i < 10; ++i) {
         if (i < heroHealInven.length) {
-          inventory[30 + i].src = heroHealInven[i].src;
+          inventory[20 + i].src = heroHealInven[i].src;
           healInventory[i].src = heroHealInven[i].src;
         } else {
-          inventory[30 + i].src = 'EmptyItemBox.png';
+          inventory[20 + i].src = 'EmptyItemBox.png';
           healInventory[i].src = 'EmptyItemBox.png';
         }
       }
@@ -144,6 +140,7 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
   	 stats[0].innerText = "Health: " + heroMaxHealth;
      stats[1].innerText = "Damage: " + heroDamage;
      stats[2].innerText = "Defense: " + heroDefense;
+     statPoints.innerText = "Stat Points: " + unspentStatPoints;
   }
   function equipItem(rowNum, index) {
     if (rowNum == 1) {
@@ -227,14 +224,14 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
       }
     } else {
       if (i - 36 < heroHealInven.length) {
-        CPUDes.innerText = heroHealInven[i - 20].name;
+        CPUDsc.innerText = heroHealInven[i - 36].name;
       }
     }
   }
   function updateHealthBars() {
     FPEneHealth.innerText =
-      Math.max(0, enemyCurrentHealth) + '/' + enemyList[currentStage].health + ' HP';
-    FPHeroHealth.innerText = Math.max(0, heroCurrentHealth) + '/' + heroMaxHealth + 'HP';
+      Math.max(0, enemyCurrentHealth) + '/' + (enemyList[currentStage].health).toFixed(2) + ' HP';
+    FPHeroHealth.innerText = (Math.max(0, heroCurrentHealth)).toFixed(2) + '/' + heroMaxHealth + 'HP';
     FPEneHealthBar.reset();
     FPHeroHealthBar.reset();
     FPEneHealthBar.beginPath();
@@ -282,6 +279,32 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     FPHeroHealthBar.fill();
     FPHeroHealthBar.closePath();
   }
+  function updateXPBar() {
+    MPHeroTable.children[0].children[1].children[0].innerText = "Level: " + heroLevel;
+    MPHeroXPBar.reset();
+    MPHeroXPBar.beginPath();
+    MPHeroXPBar.fillStyle = 'black';
+    MPHeroXPBar.roundRect(
+      0,
+      0,
+      MPHeroXPBarCanvas.width,
+      MPHeroXPBarCanvas.height,
+      0.05 * MPHeroXPBarCanvas.width,
+    );
+    MPHeroXPBar.fill();
+    MPHeroXPBar.closePath();
+    MPHeroXPBar.beginPath();
+    MPHeroXPBar.fillStyle = 'blue';
+    MPHeroXPBar.roundRect(
+      0,
+      0,
+      (heroXP / (4*Math.pow(1.5,heroLevel))) * MPHeroXPBarCanvas.width,
+      MPHeroXPBarCanvas.height,
+      0.05 * MPHeroXPBarCanvas.width,
+    );
+    MPHeroXPBar.fill();
+    MPHeroXPBar.closePath();
+  }
   function startFightPage() {
     heroCurrentHealth = heroMaxHealth;
     enemyCurrentHealth = enemyList[currentStage].health;
@@ -289,15 +312,63 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     FPHeroHealth.innerText = heroCurrentHealth + '/' + heroMaxHealth + 'HP';
     updateHealthBars();
   }
-  function checkWinConditions() {
-    if (heroCurrentHealth == 0) {
+	function checkWinConditions() {
+    if (heroCurrentHealth <= 0) {
       battleLog.innerText += '\nYou died, press any key to go to Main Page';
       battleLog.scrollTop = battleLog.scrollHeight;
       document.onkeydown = () => {
         FP.style.display = 'none';
         MP.style.display = 'flex';
         battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
-      };
+      }
+    } else if (enemyCurrentHealth <= 0){
+    	battleLog.innerText += "\nYou have defeated " + enemyList[currentStage].name + " and have gained " + enemyList[currentStage].exp + " XP";
+      heroXP += enemyList[currentStage].exp;
+      let dropRandNum = Math.random();
+      let dropCurrentChance = 0;
+      for(let i = 0; i < enemyList[currentStage].drops.length; ++i){
+      	dropCurrentChance += enemyList[currentStage].probs[i];
+        if(dropRandNum <= dropCurrentChance){
+          battleLog.innerText += " and have obtained the " + enemyList[currentStage].drops[i].name;
+          if(enemyList[currentStage].drops[i].type == "Weapon" || enemyList[currentStage].drops[i].type == "Shield") {
+           	if(heroWeaponInven.length < 9){
+            	heroWeaponInven.push(enemyList[currentStage].drops[i]);
+              updateInventory(2);
+            } else {
+            	battleLog.innerText += " but because of you full inventory row, it has been discarded";  
+            }
+          } else if(enemyList[currentStage].drops[i].type == "Healing") {
+            	if(heroHealInven.length < 9){
+            	heroHealInven.push(enemyList[currentStage].drops[i]);
+              updateInventory(3);
+            } else {
+            	battleLog.innerText += " but because of you full inventory row, it has been discarded";  
+            }
+          } else {
+            if(heroArmorInven.length < 9){
+            	heroArmorInven.push(enemyList[currentStage].drops[i]);
+              updateInventory(1);
+            } else {
+            	battleLog.innerText += " but because of you full inventory row, it has been discarded";  
+            }
+          }
+          break;
+        }
+      }
+      if(heroXP >= 4 * Math.pow(1.5,heroLevel)){
+    		battleLog.innerText += "\nYou have leveled up!";
+        heroXP -= 4 * Math.pow(1.5,heroLevel);
+        heroLevel++;
+        unspentStatPoints += 2;
+      }
+      updateXPBar();
+      updateStatsPopUp();
+      battleLog.scrollTop = battleLog.scrollHeight;
+      document.onkeydown = () => {
+        FP.style.display = 'none';
+        MP.style.display = 'flex';
+        battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
+      }
     }
   }
   function useItem(i) {
@@ -335,18 +406,9 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
       }
     } else {
       if (i - 36 < heroHealInven.length) {
-        battleLog.innerText +=
-          '\nHero has healed themselves for ' +
-          (min(heroMaxHealth, heroCurrentHealth + heroHealInven[i - 36].effect) -
-            heroCurrentHealth) +
-          ' HP ' +
-          '\n' +
-          enemyList[currentStage].name +
-          ' has dealt ' +
-          enemyList[currentStage].damage +
-          ' damage to Hero';
-        heroCurrentHealth = min(heroMaxHealth, heroCurrentHealth + heroHealInven[i - 36].effect);
-        heroCurrentHealth -= enemyList[currentStage].damage;
+        battleLog.innerText += '\nHero has healed themselves for ' + (Math.min(heroMaxHealth, heroCurrentHealth + heroHealInven[i - 36].effect) - heroCurrentHealth).toFixed(2) + ' HP ' + '\n' + enemyList[currentStage].name + ' has dealt ' + (enemyList[currentStage].damage*(2-(2/(1+Math.exp(-heroDefense/20))))).toFixed(2) + ' damage to Hero';
+        heroCurrentHealth = Math.min(heroMaxHealth, heroCurrentHealth + heroHealInven[i - 36].effect);
+        heroCurrentHealth -= enemyList[currentStage].damage*(2-(2/(1+Math.exp(-heroDefense/20))));
         heroHealInven.splice(i - 36, 1);
         updateInventory(3);
         battleLog.scrollTop = battleLog.scrollHeight;
@@ -355,7 +417,27 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
       }
     }
   }
-
+	function updateMainPage(){
+  	MPEneImg.src = enemyList[currentStage].src;
+    MPEneDsc.innerText = enemyList[currentStage].name + "\n" + enemyList[currentStage].health + " HP\n";
+    for(let i = 0; i < enemyList[currentStage].drops.length; ++i){
+    	MPEneDsc.innerText += enemyList[currentStage].drops[i].name.slice(0,enemyList[currentStage].drops[i].name.indexOf(",")) + "(" + (enemyList[currentStage].probs[i]*100) + "%)";
+      if( i < enemyList[currentStage].drops.length-1){
+      	MPEneDsc.innerText += ", "; 
+      }
+    }
+    if(currentStage == 0){
+    	decStageLvlBtn.style.display = "none"; 
+    } else {
+      decStageLvlBtn.style.display = "flex"; 
+    }
+    if(currentStage == stageLvlReq.length-1){
+    	incStageLvlBtn.style.display = "none";
+    } else {
+     	incStageLvlBtn.style.display = "flex";
+      incStageLvlBtn.innerText = "Go Foward\nReq Level " + stageLvlReq[currentStage];
+    }
+  }
   IPtoMPBtn.onclick = () => {
     IP.style.display = 'none';
     MP.style.display = 'flex';
@@ -387,44 +469,121 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     CPU.style.display = 'none';
   };
   deleteModeBtn.onclick = () => {
-    deleteMode = !deleteMode; 
-  }
+    deleteMode = !deleteMode;
+    deleteModeBtn.style.fontWeight = "normal";
+    if(deleteMode){
+      deleteModeBtn.style.fontWeight = "bold";
+    }
+  };
+  incStageLvlBtn.onclick = () => {
+  	currentStage++;
+    updateMainPage();
+  };
+  decStageLvlBtn.onclick = () => {
+  	currentStage--;
+    updateMainPage();
+  };
   attackBtn.onclick = () => {
     if (enemyCurrentHealth <= 0 || heroCurrentHealth <= 0) {
       FP.style.display = 'none';
       MP.style.display = 'flex';
       battleLog.innerText = "It's time to d-d-d-d-d-d-duel";
     } else {
-      enemyCurrentHealth -= heroDamage;
-      heroCurrentHealth -= enemyList[currentStage].damage;
-      battleLog.innerText +=
-        '\nHero has dealt ' +
-        heroDamage +
-        ' damage to ' +
-        enemyList[currentStage].name +
-        '\n' +
-        enemyList[currentStage].name +
-        ' has dealt ' +
-        enemyList[currentStage].damage +
-        ' damage to Hero';
+      enemyCurrentHealth -= heroDamage*(2-(2/(1+Math.exp(-enemyList[currentStage].defense/20))));
+      heroCurrentHealth -= enemyList[currentStage].damage*(2-(2/(1+Math.exp(-heroDefense/20))));
+      battleLog.innerText += '\nHero has dealt ' + (heroDamage*(2-(2/(1+Math.exp(-enemyList[currentStage].defense/20))))).toFixed(2) + ' damage to ' + enemyList[currentStage].name + '\n' + enemyList[currentStage].name + ' has dealt ' + (enemyList[currentStage].damage*(2-(2/(1+Math.exp(-heroDefense/20))))).toFixed(2) + ' damage to Hero';
       battleLog.scrollTop = battleLog.scrollHeight;
       updateHealthBars();
       checkWinConditions();
     }
   };
+  saveBtn.onclick = () => {
+    let temp = [heroMaxHealth,heroDamage,heroDefense,unspentStatPoints,heroLevel,heroXP];
+    let tempEquip = [];
+    let tempInventory = [[],[],[]];
+    for(let i = 0; i < 6; ++i){
+      if(heroEquipment[i] == "none"){
+        tempEquip.push("none");
+      } else {
+        tempEquip.push(heroEquipment[i].indexNum);
+      }
+    }
+    for(let i = 0; i < heroArmorInven.length; ++i){
+    	tempInventory[0].push(heroArmorInven[i].indexNum);  
+    }
+    for(let i = 0; i < heroWeaponInven.length; ++i){
+    	tempInventory[1].push(heroWeaponInven[i].indexNum); 
+    }
+    for(let i = 0; i < heroHealInven.length; ++i){
+    	tempInventory[2].push(heroHealInven[i].indexNum); 
+    }
+    temp.push(tempEquip);
+    temp.push(tempInventory);
+    localStorage.setItem("storage",btoa(JSON.stringify(temp)));
+  };
+  loadBtn.onclick = () => {
+    heroArmorInven = [];
+    heroWeaponInven = [];
+    heroHealInven = [];
+    let temp = JSON.parse(atob(localStorage.getItem("storage")));
+    heroMaxHealth = temp[0];
+    heroDamage = temp[1];
+    heroDefense = temp[2];
+    unspentStatPoints = temp[3];
+    heroLevel = temp[4];
+    heroXP = temp[5];
+    for(let i = 0; i < 6; ++i){
+      if(temp[6][i] == "none"){
+        heroEquipment[i] = "none";
+      } else {
+        heroEquipment[i] = equipmentList[temp[6][i]];
+      }
+    }
+    for(let i = 0; i < temp[7][0].length; ++i){
+    	heroArmorInven.push(equipmentList[temp[7][0][i]]);  
+    }
+    for(let i = 0; i < temp[7][1].length; ++i){
+    	heroWeaponInven.push(equipmentList[temp[7][1][i]]); 
+    }
+    for(let i = 0; i < temp[7][2].length; ++i){
+    	heroHealInven.push(equipmentList[temp[7][2][i]]); 
+    }
+    for(let i = 1; i < 5; ++i){
+    	updateInventory(i);
+    }
+    updateStatsPopUp();
+    updateXPBar();
+    MPHeroTable.children[0].children[0].children[0].innerText = "Health: " + heroMaxHealth + "/" + heroMaxHealth;
+  };
+  for (let i = 0; i < 3; ++i) {
+  	incStatBtn[i].onclick = () => {
+    	if(unspentStatPoints > 0){
+      	 if(i == 0){
+           heroMaxHealth++;
+           MPHeroTable.children[0].children[0].children[0].innerText = "Health: " + heroMaxHealth + "/" + heroMaxHealth;
+         } else if (i == 1) {
+           heroDamage++;
+         } else {
+           heroDefense++;
+         }
+        unspentStatPoints--;
+      }
+      updateStatsPopUp();
+    };
+  }
   for (let i = 0; i < 30; ++i) {
     inventory[i].onmouseout = () => {
       if(itemDes.innerText != "No Item Selected"){
      		itemDesImg.src = "EmptyItemBox.png";
       	itemDes.innerText = "No Item Selected";
       }
-    }
+    };
     inventory[i].onmouseover = () => {
       showItem(i);
     };
     inventory[i].onclick = () => {
       useItem(i); 
-    }
+    };
   }
   for (let i = 0; i < 6; ++i) {
     equippedImgs[i].onmouseout = () => {
@@ -432,24 +591,27 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
      		itemDesImg.src = "EmptyItemBox.png";
       	itemDes.innerText = "No Item Selected";
       }
-    }
+    };
     equippedImgs[i].onmouseover = () => {
       showItem(i + 30);
     };
     equippedImgs[i].onclick = () => {
       useItem(i + 30); 
-    }
+    };
   }
   for (let i = 0; i < 10; ++i) {
     healInventory[i].onmouseout = () => {
-      if(CPUDes.innerText != "No Item Selected"){
-     		CPUDes.innerText = "No Item Selected";
+      if(CPUDsc.innerText != "No Item Selected"){
+     		CPUDsc.innerText = "No Item Selected";
       }
-    }
+    };
     healInventory[i].onmouseover = () => {
       showItem(i + 36);
     };
     healInventory[i].onclick = () => {
       useItem(i + 36); 
-    }
+    };
   }
+  
+  //Starting functions
+  updateXPBar();
