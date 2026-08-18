@@ -67,7 +67,7 @@ body {
   background-color: #626262;
 }
 #deleteModeButton {
-	display: inherit;
+  display: inherit;
   position: absolute;
   justify-content: center;
   align-items: center;
@@ -79,6 +79,8 @@ body {
 }
 #inventorySection > table {
   display: inherit;
+  width: 50vw;
+  height: 15vh;
   justify-content: center;
   align-items: center;
   border-collapse: collapse;
