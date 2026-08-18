@@ -59,7 +59,7 @@ const IPtoMPBtn = document.getElementById('returnMainPage'),
     'Leather Boots that are holding on by a thread, +1 defense',
     'Boots',
     1,
-    '',
+    'helmet.png',
     0,
   );
 
