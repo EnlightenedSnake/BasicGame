@@ -78,6 +78,9 @@ body {
   font-size: min(3vw, 3vh);
 }
 #inventorySection > table {
+  display: inherit;
+  justify-content: center;
+  align-items: center;
   border-collapse: collapse;
 }
 .inventorySlot {
