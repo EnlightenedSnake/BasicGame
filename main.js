@@ -229,53 +229,28 @@
     }
   }
   function updateHealthBars() {
-    FPEneHealth.innerText =
-      Math.max(0, enemyCurrentHealth) + '/' + (enemyList[currentStage].health).toFixed(2) + ' HP';
+    FPEneHealth.innerText = (Math.max(0, enemyCurrentHealth)).toFixed(2) + '/' + enemyList[currentStage].health + ' HP';
     FPHeroHealth.innerText = (Math.max(0, heroCurrentHealth)).toFixed(2) + '/' + heroMaxHealth + 'HP';
     FPEneHealthBar.reset();
     FPHeroHealthBar.reset();
     FPEneHealthBar.beginPath();
     FPEneHealthBar.fillStyle = 'gray';
-    FPEneHealthBar.roundRect(
-      0,
-      0,
-      FPEneHealthBarCanvas.width,
-      FPEneHealthBarCanvas.height,
-      0.05 * FPEneHealthBarCanvas.width,
-    );
+    FPEneHealthBar.roundRect(0, 0, FPEneHealthBarCanvas.width, FPEneHealthBarCanvas.height, 0.05 * FPEneHealthBarCanvas.width);
     FPEneHealthBar.fill();
     FPEneHealthBar.closePath();
     FPEneHealthBar.beginPath();
     FPEneHealthBar.fillStyle = 'red';
-    FPEneHealthBar.roundRect(
-      0,
-      0,
-      (enemyCurrentHealth / enemyList[currentStage].health) * FPEneHealthBarCanvas.width,
-      FPEneHealthBarCanvas.height,
-      0.05 * FPEneHealthBarCanvas.width,
-    );
+    FPEneHealthBar.roundRect(0,0,(enemyCurrentHealth / enemyList[currentStage].health) * FPEneHealthBarCanvas.width, FPEneHealthBarCanvas.height, 0.05 * FPEneHealthBarCanvas.width);
     FPEneHealthBar.fill();
     FPEneHealthBar.closePath();
     FPHeroHealthBar.beginPath();
     FPHeroHealthBar.fillStyle = 'gray';
-    FPHeroHealthBar.roundRect(
-      0,
-      0,
-      FPHeroHealthBarCanvas.width,
-      FPHeroHealthBarCanvas.height,
-      0.05 * FPHeroHealthBarCanvas.width,
-    );
+    FPHeroHealthBar.roundRect(0,0,FPHeroHealthBarCanvas.width,FPHeroHealthBarCanvas.height,0.05 * FPHeroHealthBarCanvas.width);
     FPHeroHealthBar.fill();
     FPHeroHealthBar.closePath();
     FPHeroHealthBar.beginPath();
     FPHeroHealthBar.fillStyle = 'red';
-    FPHeroHealthBar.roundRect(
-      0,
-      0,
-      (heroCurrentHealth / heroMaxHealth) * FPHeroHealthBarCanvas.width,
-      FPHeroHealthBarCanvas.height,
-      0.05 * FPHeroHealthBarCanvas.width,
-    );
+    FPHeroHealthBar.roundRect(0,0,(heroCurrentHealth / heroMaxHealth) * FPHeroHealthBarCanvas.width,FPHeroHealthBarCanvas.height,0.05 * FPHeroHealthBarCanvas.width);
     FPHeroHealthBar.fill();
     FPHeroHealthBar.closePath();
   }
@@ -284,24 +259,12 @@
     MPHeroXPBar.reset();
     MPHeroXPBar.beginPath();
     MPHeroXPBar.fillStyle = 'black';
-    MPHeroXPBar.roundRect(
-      0,
-      0,
-      MPHeroXPBarCanvas.width,
-      MPHeroXPBarCanvas.height,
-      0.05 * MPHeroXPBarCanvas.width,
-    );
+    MPHeroXPBar.roundRect(0,0,MPHeroXPBarCanvas.width,MPHeroXPBarCanvas.height,0.05 * MPHeroXPBarCanvas.width);
     MPHeroXPBar.fill();
     MPHeroXPBar.closePath();
     MPHeroXPBar.beginPath();
     MPHeroXPBar.fillStyle = 'blue';
-    MPHeroXPBar.roundRect(
-      0,
-      0,
-      (heroXP / (4*Math.pow(1.5,heroLevel))) * MPHeroXPBarCanvas.width,
-      MPHeroXPBarCanvas.height,
-      0.05 * MPHeroXPBarCanvas.width,
-    );
+    MPHeroXPBar.roundRect(0,0,(heroXP / (4*Math.pow(1.5,heroLevel))) * MPHeroXPBarCanvas.width,MPHeroXPBarCanvas.height,0.05 * MPHeroXPBarCanvas.width);
     MPHeroXPBar.fill();
     MPHeroXPBar.closePath();
   }
