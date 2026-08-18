@@ -1,44 +1,44 @@
+//Naming Conventions: MP=Main Page, IP=Inventory Page, FP=Fight Page, Btn=Button, Img=Image, Ene=Enemy, Dsc=Description
 const IPtoMPBtn = document.getElementById('returnMainPage'),
-MPtoIPBtn = document.getElementById('gotoInventory'),
-MPtoFPBtn = document.getElementById('fightButton'),
-FPtoMPBtn = document.getElementById('runButton'),
-MP = document.getElementById('mainPage'),
-FP = document.getElementById('fightPage'),
-IP = document.getElementById('inventoryPage'),
-SPU = document.getElementById('statsPopUp'),
-CPU = document.getElementById('consumablesPopUp'),
-openSPUBtn = document.getElementById('statsButton'),
-closeSPUBtn = document.getElementById('exitStatsPopUpButton'),
-incStatBtn = document.getElementsByClassName('incStat'),
-stats = document.getElementsByClassName('stat'),
-statPoints = document.getElementById('statPoints'),
-equippedImgs = document.getElementsByClassName('equippedSlot'),
-itemDesImg = document.getElementById('largeItemImage'),
-itemDes = document.getElementById('itemDescription'),
-inventory = document.getElementsByClassName('inventorySlot'),
-deleteModeBtn = document.getElementById('deleteModeButton'),
-saveBtn = document.getElementById('saveButton'),
-loadBtn = document.getElementById('loadButton'),
-MPEneDsc = document.getElementById('mainPageEnemyDescription'),
-MPEneImg = document.getElementById('mainPageEnemyImage'),
-incStageLvl = document.getElementById('increaseStageLevel'),
-decStageLvl = document.getElementById('decreaseStageLevel'),
-MPHeroTable = document.getElementById('mainPageHeroTable'),
-MPHeroXPBar = MPHeroTable.children[0].children[1].children[1].children[0].getContext('2d'),
-FPEneHealthBarCanvas = document.getElementById('fightPageEnemyHealthBar'),
-FPEneHealthBar = FPEneHealthBarCanvas.getContext('2d'),
-FPEneHealth = document.getElementById('fightPageEnemyHealth'),
-FPEneImg = document.getElementById('fightPageEnemyImage'),
-FPHeroHealth = document.getElementById('fightPageHeroHealth'),
-FPHeroHealthBarCanvas = document.getElementById('fightPageHeroHealthBar'),
-FPHeroHealthBar = FPHeroHealthBarCanvas.getContext('2d'),
-attackBtn = document.getElementById('attackButton'),
-openCPUBtn = document.getElementById('itemsButton'),
-closeCPUBtn = document.getElementById('closeConsumablesPopUpButton'),
-healInventory = document.getElementsByClassName('consumableSlot'),
-CPUDes = document.getElementById('consumableItemDescription'),
-battleLog = document.getElementById('battleLog'),
-htmlEle = document.getElementsByTagName("html")[0];
+	MPtoIPBtn = document.getElementById('gotoInventory'),
+	MPtoFPBtn = document.getElementById('fightButton'),
+	FPtoMPBtn = document.getElementById('runButton'),
+	MP = document.getElementById('mainPage'),
+	FP = document.getElementById('fightPage'),
+	IP = document.getElementById('inventoryPage'),
+	SPU = document.getElementById('statsPopUp'),
+	CPU = document.getElementById('consumablesPopUp'),
+	openSPUBtn = document.getElementById('statsButton'),
+	closeSPUBtn = document.getElementById('exitStatsPopUpButton'),
+	incStatBtn = document.getElementsByClassName('incStat'),
+	stats = document.getElementsByClassName('stat'),
+	statPoints = document.getElementById('statPoints'),
+	equippedImgs = document.getElementsByClassName('equippedSlot'),
+	itemDesImg = document.getElementById('largeItemImage'),
+	itemDes = document.getElementById('itemDescription'),
+	inventory = document.getElementsByClassName('inventorySlot'),
+	deleteModeBtn = document.getElementById('deleteModeButton'),
+	saveBtn = document.getElementById('saveButton'),
+	loadBtn = document.getElementById('loadButton'),
+	MPEneDsc = document.getElementById('mainPageEnemyDescription'),
+	MPEneImg = document.getElementById('mainPageEnemyImage'),
+	incStageLvl = document.getElementById('increaseStageLevel'),
+	decStageLvl = document.getElementById('decreaseStageLevel'),
+	MPHeroTable = document.getElementById('mainPageHeroTable'),
+	MPHeroXPBar = MPHeroTable.children[0].children[1].children[1].children[0].getContext('2d'),
+	FPEneHealthBarCanvas = document.getElementById('fightPageEnemyHealthBar'),
+	FPEneHealthBar = FPEneHealthBarCanvas.getContext('2d'),
+	FPEneHealth = document.getElementById('fightPageEnemyHealth'),
+	FPEneImg = document.getElementById('fightPageEnemyImage'),
+	FPHeroHealth = document.getElementById('fightPageHeroHealth'),
+	FPHeroHealthBarCanvas = document.getElementById('fightPageHeroHealthBar'),
+	FPHeroHealthBar = FPHeroHealthBarCanvas.getContext('2d'),
+	attackBtn = document.getElementById('attackButton'),
+	openCPUBtn = document.getElementById('itemsButton'),
+	closeCPUBtn = document.getElementById('closeConsumablesPopUpButton'),
+	healInventory = document.getElementsByClassName('consumableSlot'),
+	CPUDes = document.getElementById('consumableItemDescription'),
+	battleLog = document.getElementById('battleLog');
 
 class Equipment {
 name = 'Sword';
@@ -147,9 +147,9 @@ FPEneHealthBar.fillStyle = 'gray';
 FPEneHealthBar.roundRect(
   0,
   0,
-  0.6 * htmlEle.clientWidth,
-  0.29 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
+  FPEneHealthBarCanvas.width,
+  FPEneHealthBarCanvas.height,
+  0.05 * FPEneHealthBarCanvas.width
 );
 FPEneHealthBar.fill();
 FPEneHealthBar.closePath();
@@ -157,10 +157,10 @@ FPEneHealthBar.beginPath();
 FPEneHealthBar.fillStyle = 'red';
 FPEneHealthBar.roundRect(
   0,
-  0.0,
-  (enemyCurrentHealth / enemyList[currentStage].health) * 0.6 * htmlEle.clientWidth,
-  0.29 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
+  0,
+  (enemyCurrentHealth / enemyList[currentStage].health) * FPEneHealthBarCanvas.width,
+  FPEneHealthBarCanvas.height,
+  0.05 * FPEneHealthBarCanvas.width
 );
 FPEneHealthBar.fill();
 FPEneHealthBar.closePath();
@@ -169,9 +169,9 @@ FPHeroHealthBar.fillStyle = 'gray';
 FPHeroHealthBar.roundRect(
   0,
   0,
-  0.6 * htmlEle.clientWidth,
-  0.29 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
+  FPHeroHealthBarCanvas.width,
+  FPHeroHealthBarCanvas.height,
+  0.05 * FPHeroHealthBarCanvas.width
 );
 FPHeroHealthBar.fill();
 FPHeroHealthBar.closePath();
@@ -180,9 +180,9 @@ FPHeroHealthBar.fillStyle = 'red';
 FPHeroHealthBar.roundRect(
   0,
   0,
-  (heroCurrentHealth / heroMaxHealth) * 0.6 * htmlEle.clientWidth,
-  0.29 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
+  (heroCurrentHealth / heroMaxHealth) * FPHeroHealthBarCanvas.width,
+  FPHeroHealthBarCanvas.height,
+  0.05 * FPHeroHealthBarCanvas.width
 );
 FPHeroHealthBar.fill();
 FPHeroHealthBar.closePath();
@@ -192,44 +192,7 @@ heroCurrentHealth = heroMaxHealth;
 enemyCurrentHealth = enemyList[currentStage].health;
 FPEneHealth.innerText = enemyCurrentHealth + '/' + enemyCurrentHealth + ' HP';
 FPHeroHealth.innerText = heroCurrentHealth + '/' + heroMaxHealth + 'HP';
-FPEneHealthBar.beginPath();
-FPEneHealthBar.fillStyle = 'gray';
-FPEneHealthBar.roundRect(
-  0,
-  0,
-  0.6 * htmlEle.clientWidth,
-  0.29 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
-);
-FPEneHealthBar.fill();
-FPEneHealthBar.fillStyle = 'red';
-FPEneHealthBar.roundRect(
-  0.025 * htmlEle.clientWidth,
-  0.025 * htmlEle.clientHeight,
-  0.55 * htmlEle.clientWidth,
-  0.24 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
-);
-FPEneHealthBar.fill();
-FPHeroHealthBar.beginPath();
-FPHeroHealthBar.fillStyle = 'gray';
-FPHeroHealthBar.roundRect(
-  0,
-  0,
-  0.6 * htmlEle.clientWidth,
-  0.29 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
-);
-FPHeroHealthBar.fill();
-FPHeroHealthBar.fillStyle = 'red';
-FPHeroHealthBar.roundRect(
-  0.025 * htmlEle.clientWidth,
-  0.025 * htmlEle.clientHeight,
-  0.55 * htmlEle.clientWidth,
-  0.24 * htmlEle.clientHeight,
-  0.025 * htmlEle.clientHeight,
-);
-FPHeroHealthBar.fill();
+updateHealthBars();
 }
 function checkWinConditions() {
 if (heroCurrentHealth == 0) {
