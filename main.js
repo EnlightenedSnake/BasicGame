@@ -476,7 +476,7 @@
     }
   };
   incStageLvlBtn.onclick = () => {
-	if(heroLevel >= stageLvlReq(currentStage)){
+	if(heroLevel >= stageLvlReq[currentStage]){
 	  	currentStage++;
 	    updateMainPage();
 	}
