@@ -105,7 +105,7 @@
         if (i < heroArmorInven.length) {
           inventory[i].src = heroArmorInven[i].src;
         } else {
-          inventory[i].src = 'EmptyItemBox.png';
+          inventory[i].src = 'imageFolder/EmptyItemBox.png';
         }
       }
     } else if (rowNum == 2) {
@@ -113,7 +113,7 @@
         if (i < heroWeaponInven.length) {
           inventory[10 + i].src = heroWeaponInven[i].src;
         } else {
-          inventory[10 + i].src = 'EmptyItemBox.png';
+          inventory[10 + i].src = 'imageFolder/EmptyItemBox.png';
         }
       }
     } else if (rowNum == 3) {
@@ -122,8 +122,8 @@
           inventory[20 + i].src = heroHealInven[i].src;
           healInventory[i].src = heroHealInven[i].src;
         } else {
-          inventory[20 + i].src = 'EmptyItemBox.png';
-          healInventory[i].src = 'EmptyItemBox.png';
+          inventory[20 + i].src = 'imageFolder/EmptyItemBox.png';
+          healInventory[i].src = 'imageFolder/EmptyItemBox.png';
         }
       }
     } else if (rowNum == 4) {
@@ -131,7 +131,7 @@
         if (heroEquipment[i] != 'none') {
           equippedImgs[i].src = heroEquipment[i].src;
         } else {
-          equippedImgs[i].src = 'EmptyItemBox.png';
+          equippedImgs[i].src = 'imageFolder/EmptyItemBox.png';
         }
       }
     }
@@ -539,7 +539,7 @@
   for (let i = 0; i < 30; ++i) {
     inventory[i].onmouseout = () => {
       if(itemDes.innerText != "No Item Selected"){
-     		itemDesImg.src = "EmptyItemBox.png";
+     		itemDesImg.src = "imageFolder/EmptyItemBox.png";
       	itemDes.innerText = "No Item Selected";
       }
     };
@@ -553,7 +553,7 @@
   for (let i = 0; i < 6; ++i) {
     equippedImgs[i].onmouseout = () => {
      	if(itemDes.innerText != "No Item Selected"){
-     		itemDesImg.src = "EmptyItemBox.png";
+     		itemDesImg.src = "imageFolder/EmptyItemBox.png";
       	itemDes.innerText = "No Item Selected";
       }
     };
