@@ -584,3 +584,4 @@
   
   //Starting functions
   updateXPBar();
+  updateMainPage();
