@@ -84,7 +84,7 @@
   const equipmentList = [flimsyLeatherBoots];
   const enemyList = [firstEnemy, secondEnemy];
   const stageLvlReq = [5, 8];
-  const stageBackgrounds = ['imageFolder/background1.png','imageFolder/background1.png'];
+  const stageBackgrounds = ['imageFolder/background1.png','imageFolder/background2.png'];
 							
   var heroMaxHealth = 10;
   var heroDamage = 2;
