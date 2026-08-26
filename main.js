@@ -78,8 +78,8 @@
       this.src = img;
     }
   }
-  const firstEnemy = new Enemy('Weak', 5, 2, 0, 2, [flimsyLeatherBoots], [0.3], '');
-  const secondEnemy = new Enemy('Less Strong', 10, 4, 1, 5, [], [], '');
+  const firstEnemy = new Enemy('Enraged Earthworm', 5, 2, 0, 2, [flimsyLeatherBoots], [0.3], 'imageFolder/WormBoss.png');
+  const secondEnemy = new Enemy('Lost Chicken', 10, 4, 1, 5, [], [], 'imageFolder/chickenMonster.png');
 
   const equipmentList = [flimsyLeatherBoots];
   const enemyList = [firstEnemy, secondEnemy];
