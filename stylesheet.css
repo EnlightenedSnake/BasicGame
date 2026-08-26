@@ -98,7 +98,14 @@ body {
   align-items: end;
   justify-content: center;
 }
-
+#backgroundImage {
+	display: inherit;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  z-index: -1;
+}
 #gotoInventory {
   display: inherit;
   position: fixed;
