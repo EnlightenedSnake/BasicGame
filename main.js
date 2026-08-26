@@ -18,6 +18,7 @@
     itemDes = document.getElementById('itemDescription'),
     inventory = document.getElementsByClassName('inventorySlot'),
     deleteModeBtn = document.getElementById('deleteModeButton'),
+	MPBackgroundImg = document.getElementById('backgroundImage'),
     saveBtn = document.getElementById('saveButton'),
     loadBtn = document.getElementById('loadButton'),
     MPEneDsc = document.getElementById('mainPageEnemyDescription'),
@@ -82,8 +83,9 @@
 
   const equipmentList = [flimsyLeatherBoots];
   const enemyList = [firstEnemy, secondEnemy];
-	const stageLvlReq = [5, 8]
-  
+  const stageLvlReq = [5, 8];
+  const stageBackgrounds = ['imageFolder/background1.png','imageFolder/background1.png'];
+							
   var heroMaxHealth = 10;
   var heroDamage = 2;
   var heroDefense = 0;
@@ -381,6 +383,7 @@
     }
   }
 	function updateMainPage(){
+	MPBackgroundImg.src = stageBackgrounds[currentStage];
   	MPEneImg.src = enemyList[currentStage].src;
     MPEneDsc.innerText = enemyList[currentStage].name + "\n" + enemyList[currentStage].health + " HP\n";
     for(let i = 0; i < enemyList[currentStage].drops.length; ++i){
