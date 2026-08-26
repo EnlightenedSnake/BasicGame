@@ -273,6 +273,7 @@
   function startFightPage() {
     heroCurrentHealth = heroMaxHealth;
     enemyCurrentHealth = enemyList[currentStage].health;
+	FPEneImg.src = enemyList[currentStage].src;
     FPEneHealth.innerText = enemyCurrentHealth + '/' + enemyCurrentHealth + ' HP';
     FPHeroHealth.innerText = heroCurrentHealth + '/' + heroMaxHealth + 'HP';
     updateHealthBars();
