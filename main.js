@@ -56,7 +56,7 @@
       this.indexNum = indexNumber;
     }
   }
-  const flimsyLeatherBoots = new Equipment('Leather Boots that are holding on by a thread, +1 defense', 'Boots', 1, '', 0);
+  const flimsyLeatherBoots = new Equipment('Leather Boots that are holding on by a thread, +1 defense', 'Boots', 1, 'imageFolder/basicgameBoots.png', 0);
 
   class Enemy {
     name = '';
